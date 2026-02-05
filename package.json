@@ -1,0 +1,23 @@
+{
+  "name": "saucelabs-store-playwright-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RomanSarker/saucelabs-store-playwright-automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RomanSarker/saucelabs-store-playwright-automation/issues"
+  },
+  "homepage": "https://github.com/RomanSarker/saucelabs-store-playwright-automation#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.1",
+    "@types/node": "^25.2.0"
+  }
+}
