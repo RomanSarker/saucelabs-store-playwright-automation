@@ -1,7 +1,7 @@
 import {InventoryProductPage} from "../pages/inventoryProductPage";
 
 export class InventoryProductAction{
-    constructor(){
+    constructor(page){
         this.page = page ;
         this.inventoryProductPage = new InventoryProductPage(page);
     }
@@ -22,8 +22,8 @@ export class InventoryProductAction{
         await this.page.inventoryProductPage.clickCartIcon.click();
     }
 
-    async logout(){
-        await this.page.inventoryProductPage.logoutLink.click();
-    }
+    // async logout(){
+    //     await this.page.inventoryProductPage.logoutLink.click();
+    // }
 
 }

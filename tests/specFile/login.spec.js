@@ -2,8 +2,10 @@ import {test, expect} from "@playwright/test"
 import {LoginAction} from "../../actions/loginErrorAction"
 import {StandardUserLoginAction} from "../../actions/standardUserAction"
 import {InventoryProductAction} from "../../actions/inventoryProductAction"
+import {CartPageAction} from "../../actions/cartPageAction"
+import {CheckOutInfoPageAction} from "../../actions/checkOutInfoPageAction"
 
-test.describe("Q1-Try login with locked_out_user and verify the error message.",()=>{
+test.describe("Automation for Saucedemo",()=>{
     test("verify the error message with locked_out_user",async({page})=>{
         
         const loginAction = new LoginAction(page);
@@ -32,7 +34,34 @@ test.describe("Q1-Try login with locked_out_user and verify the error message.",
         await inventoryProductAction.resetAppState();
         await inventoryProductAction.addThreeItems();
         await inventoryProductAction.gotoTocartIcon();
-        await inventoryProductAction.logout();
+        // await inventoryProductAction.logout();
         
     })
+     test("Click CheckOut Button",async({page})=>{
+        
+        const cartPageAction = new CartPageAction(page);
+        await cartPageAction.checkOutButtonClick();
+    })
+
+     test("Fill Up CheckOut Info Details",async({page})=>{
+        
+        const checkOutInfoPageAction = new CheckOutInfoPageAction(page);
+        
+        await checkOutInfoPageAction.fillUserInfo("Roman","Sarker","1230")
+        await checkOutInfoPageAction.checkOutContinueButtonClick();
+
+        const products = await checkOutInfoPageAction.getProductNames();
+         expect(products.length).toBe(3);
+        const prices = await checkOutInfoPageAction.getProductPrices();
+            expect(prices.length).toBe(3);
+
+            await checkOutInfoPageAction.finishOrder();
+
+            await expect(checkOutInfoPageAction.checkOutInfoPage.successMessage).toHaveText("Thank you for your order!");
+
+            await inventoryProductAction.openHamBurgerMenuIcon();
+            await inventoryProductAction.resetAppState();
+            await inventoryProductAction.logout();
+    })
+    
 })
