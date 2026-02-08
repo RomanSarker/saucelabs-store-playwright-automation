@@ -1,4 +1,4 @@
-export class InventoryPage {
+export class InventoryProductPage {
     constructor(page){
         this.page = page;
 
