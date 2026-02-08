@@ -20,6 +20,6 @@ test.describe("Q1-Try login with locked_out_user and verify the error message.",
         
         await standardUserLoginAction.standardUserLoginPage();
         await standardUserLoginAction.standardlogin("standard_user","secret_sauce");
-
+        await page.waitForTimeout(2000);
     })
 })
