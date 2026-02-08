@@ -1,6 +1,7 @@
 import {test, expect} from "@playwright/test"
 import {LoginAction} from "../../actions/loginErrorAction"
 import {StandardUserLoginAction} from "../../actions/standardUserAction"
+import {InventoryProductAction} from "../../actions/inventoryProductAction"
 
 test.describe("Q1-Try login with locked_out_user and verify the error message.",()=>{
     test("verify the error message with locked_out_user",async({page})=>{
@@ -21,5 +22,17 @@ test.describe("Q1-Try login with locked_out_user and verify the error message.",
         await standardUserLoginAction.standardUserLoginPage();
         await standardUserLoginAction.standardlogin("standard_user","secret_sauce");
         await page.waitForTimeout(2000);
+    })
+
+    test("Add any three items to the cart",async({page})=>{
+        
+        const inventoryProductAction = new InventoryProductAction(page);
+
+        await inventoryProductAction.openHamBurgerMenuIcon();
+        await inventoryProductAction.resetAppState();
+        await inventoryProductAction.addThreeItems();
+        await inventoryProductAction.gotoTocartIcon();
+        await inventoryProductAction.logout();
+        
     })
 })

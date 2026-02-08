@@ -1,6 +1,6 @@
 import {InventoryProductPage} from "../pages/inventoryProductPage";
 
-export class inventoryProductAction{
+export class InventoryProductAction{
     constructor(){
         this.page = page ;
         this.inventoryProductPage = new InventoryProductPage(page);
