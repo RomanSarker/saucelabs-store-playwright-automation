@@ -45,13 +45,9 @@ The project is configured with **Allure Report** for detailed test results.
 1. **Generate Report**:
    ```bash
    npm run test:allure
-   allure open allure-report
+   
    ```
 
-2. **Open Report**:
-   ```bash
-   npm run allure:open
-   ```
 
 Alternatively, you can view the standard Playwright report:
 ```bash
